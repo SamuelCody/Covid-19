@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Adminto - Responsive Admin Dashboard Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="dist/assets/images/favicon.ico">
+
+        <!--Morris Chart-->
+        <link rel="stylesheet" href="dist/assets/libs/morris-js/morris.css" />
+
+        <!-- App css -->
+        <link href="dist/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="dist/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body>
+
+        <!-- Navigation Bar-->
+        <header id="topnav">
+
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <div class="container-fluid">
+                    <ul class="list-unstyled topnav-menu float-right mb-0">
+
+                        <li class="dropdown notification-list">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle nav-link">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </li>
+
+
+                        <li class="dropdown notification-list">
+                            <a class="btn btn-danger btn-rounded width-md waves-effect waves-light" style="margin-top: 1rem; color: #fff;" href="https://ko-fi.com/ayindesamuel" target="_blank">Buy me Coffee</a>
+                        </li>
+
+                    </ul>
+
+                    <!-- LOGO -->
+                    <div class="logo-box">
+                        <a href="index.html" class="logo text-center">
+                            <span class="logo-lg">
+                                <img src="dist/assets/images/logo-light.png" alt="" height="18">
+                                <!-- <span class="logo-lg-text-light">UBold</span> -->
+                            </span>
+                            <span class="logo-sm">
+                                <!-- <span class="logo-sm-text-dark">U</span> -->
+                                <img src="dist/assets/images/logo-sm.png" alt="" height="24">
+                            </span>
+                        </a>
+                    </div>
+
+                </div> <!-- end container-fluid-->
+            </div>
+            <!-- end Topbar -->
+
+            <div class="topbar-menu">
+                <div class="container-fluid">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+
+                            <li>
+                                <a href="index.html"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="mdi mdi-flag-variant"></i>Nigeria</a>
+                            </li>
+
+                        </ul>
+                        <!-- End navigation menu -->
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- end #navigation -->
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end navbar-custom -->
+
+        </header>
+        <!-- End Navigation Bar-->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="wrapper">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title">Covid-19 Nigeria Updates</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+
+                    <div class="col-xl-3 col-md-6">
+                      <div class="card-box">
+
+                          <div class="widget-box-2">
+                              <div class="widget-detail-2 text-left">
+                                  <h2 class="font-weight-normal mb-1" id="totalNgCase"></h2>
+                                  <p class="text-warning mb-3" style="font-size: 0.8rem;">Coronavirus cases</p>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div><!-- end col -->
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card-box">
+
+                            <div class="widget-box-2">
+                                <div class="widget-detail-2 text-left">
+                                    <h2 class="font-weight-normal mb-1" id="totalNgRecovered"> </h2>
+                                    <p class="text-success mb-3" style="font-size: 0.8rem;">Recovered cases</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- end col -->
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card-box">
+
+                            <div class="widget-box-2">
+                                <div class="widget-detail-2 text-left">
+                                    <h2 class="font-weight-normal mb-1" id="totalNgDeceased"> </h2>
+                                    <p class="text-danger mb-3" style="font-size: 0.8rem;">Total deaths</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- end col -->
+
+                    <div class="col-xl-3 col-md-6">
+                      <div class="card text-white bg-danger">
+                            <div class="card-body">
+                                <blockquote class="card-bodyquote mb-0">
+                                    <h3 class="card-title">Learn how to protect yourself</h3>
+                                    <p>You can protect yourself and help prevent
+                                    spreading the virus by staying at home</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="card-box">
+
+                            <h4 class="header-title mt-0">Covid-19 Donut Chart</h4>
+
+                            <div class="widget-chart text-center">
+                                <div id="morris-donut-nigeria" style="height: 245px;" class="morris-chart" dir="ltr"></div>
+                                <ul class="list-inline chart-detail-list mb-0">
+                                    <li class="list-inline-item">
+                                        <h5 style="color: #f9c851;"><i class="fa fa-circle mr-1"></i>Infected</h5>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 style="color: #10c469;"><i class="fa fa-circle mr-1"></i>Recovered</h5>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 style="color: #ff5b5b;"><i class="fa fa-circle mr-1"></i>Deaths</h5>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+
+                    <div class="col-xl-4">
+                        <div class="card-box">
+                            <h4 class="header-title mt-0">Linechart (Coronavirus cases)</h4>
+                            <div id="morris-line-nga-infected" style="height: 280px;" class="morris-chart" dir="ltr"></div>
+                        </div>
+                    </div><!-- end col -->
+
+                    <div class="col-xl-4">
+                        <div class="card-box">
+                            <h4 class="header-title mt-0">Linechart (Recovered cases)</h4>
+                            <div id="morris-line-nga-recovered" style="height: 280px;" class="morris-chart" dir="ltr"></div>
+                        </div>
+                    </div><!-- end col -->
+
+                </div>
+                <!-- end row -->
+
+                <!-- end row -->
+
+            </div> <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        2020 &copy; Made with ❤️
+                    </div>
+                    <div class="col-md-6">
+                      <div class="text-md-right footer-links d-none d-sm-block">
+                          <a href="https://www.linkedin.com/in/ayindesamuelayomide">About Me</a>
+                          <a href="https://ayindesamuel.com.ng/contact-me/">Contact Me</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
+
+        <!-- Vendor js -->
+        <script src="dist/assets/js/vendor.min.js"></script>
+
+        <!-- knob plugin -->
+        <script src="dist/assets/libs/jquery-knob/jquery.knob.min.js"></script>
+
+        <!--Morris Chart-->
+        <script src="dist/assets/libs/morris-js/morris.min.js"></script>
+        <script src="dist/assets/libs/raphael/raphael.min.js"></script>
+
+        <!-- App js-->
+        <script src="dist/assets/js/app.min.js"></script>
+        <script src="dist/assets/js/index.js"></script>
+
+    </body>
+</html>
