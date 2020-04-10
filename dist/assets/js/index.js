@@ -47,8 +47,8 @@ $(document).ready(function() {
       const ngaRecovered = nga[0].recovered;
 
       $('#totalNgCase').append(`${formatNumber(ngaConfirmed)}`);
-      $('#totalNgRecovered').append(`${formatNumber(ngaDeaths)}`);
-      $('#totalNgDeceased').append(`${formatNumber(ngaRecovered)}`);
+      $('#totalNgRecovered').append(`${formatNumber(ngaRecovered)}`);
+      $('#totalNgDeceased').append(`${formatNumber(ngaDeaths)}`);
 
       donutData('morris-donut-nigeria', ngaConfirmed, ngaRecovered, ngaDeaths);
     })
