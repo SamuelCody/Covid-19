@@ -15,7 +15,8 @@ $(document).ready(function() {
 
       donutData('morris-donut-global',confirmed, recovered, deaths);
     })
-
+  const k = "f708196056324d8cb96b92f444a0a3a3";
+  const q = "covid-19";
   $.getJSON('https://covidapi.info/api/v1/global/count')
     .then(function(dateCount) {
       const result = dateCount.result;
@@ -72,10 +73,29 @@ $(document).ready(function() {
       })
 
 
+      //news section
+      $.getJSON(`https://newsapi.org/v2/top-headlines?country=ng&q=${q}&apiKey=${k}`)
+        .then(function(news) {
+          const newsArray = news.articles;
+          newsArray.forEach(function(item) {
+            $('#news-section').append(`<div class="col-md-6 col-xl-3">
+              <div class="card">
+                <img class="card-img-top img-fluid" src="${item.urlToImage}" alt="${item.title}">
+                <div class="card-body">
+                  <h4 class="card-title">${item.title}</h4>
+                  <p class="card-text">${item.description}</p>
+                  <a href="${item.url}" class="btn btn-primary" target="_blank">Read more</a>
+                </div>
+              </div>
+            </div><!-- end col -->`);
+          })
 
+        })
 
 })
 
+
+//all country data
 $.getJSON('https://api.covid19api.com/summary')
   .then(function(data) {
     const rawData = data.Countries;
@@ -105,7 +125,10 @@ function formatDate(date) {
   return formatted
 }
 
-
+// function cutString(string) {
+//
+//   return string.substring(0, 60);
+// }
 
 function donutData(id, c, r, d) {
   return Morris.Donut({
@@ -141,5 +164,3 @@ function lineChartData(data, id, labels, lineColors) {
     lineColors: lineColors
   });
 }
-
-// f708196056324d8cb96b92f444a0a3a3
