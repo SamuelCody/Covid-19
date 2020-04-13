@@ -635,59 +635,59 @@ $(function() {
 
 
 //country search
-$('#search').keypress(function(event) {
-  if (event.which === 13) {
-    if ($('#search').val() !== '') {
-      const countryName = $('#search').val();
-      //check the iso3 country name from iso2
-      // console.log(iso3[countryObject[countryName]]);
+$('#btnSearch').click(function(event) {
+  event.preventDefault();
+  if ($('#search').val() !== '') {
+    const countryName = $('#search').val();
+    //check the iso3 country name from iso2
+    // console.log(iso3[countryObject[countryName]]);
 
-      $.getJSON(`https://covidapi.info/api/v1/country/${iso3[countryObject[countryName]]}/latest`)
-        .then(function(latest) {
-          const nga = Object.values(latest.result);
-          const ngaConfirmed = nga[0].confirmed;
-          const ngaDeaths = nga[0].deaths;
-          const ngaRecovered = nga[0].recovered;
+    $.getJSON(`https://covidapi.info/api/v1/country/${iso3[countryObject[countryName]]}/latest`)
+      .then(function(latest) {
+        const nga = Object.values(latest.result);
+        const ngaConfirmed = nga[0].confirmed;
+        const ngaDeaths = nga[0].deaths;
+        const ngaRecovered = nga[0].recovered;
 
-          $('#title').text(`${countryName} Covid-19 Updates`);
-          $('#totalCase').text(`${formatNumber(ngaConfirmed)}`);
-          $('#totalRecovered').text(`${formatNumber(ngaRecovered)}`);
-          $('#totalDeceased').text(`${formatNumber(ngaDeaths)}`);
+        $('#title').text(`${countryName} Covid-19 Updates`);
+        $('#totalCase').text(`${formatNumber(ngaConfirmed)}`);
+        $('#totalRecovered').text(`${formatNumber(ngaRecovered)}`);
+        $('#totalDeceased').text(`${formatNumber(ngaDeaths)}`);
 
 
-          $('#morris-donut-global').empty();
-          donutData('morris-donut-global', ngaConfirmed, ngaRecovered, ngaDeaths);
-          $('#search').val('');
+        $('#morris-donut-global').empty();
+        donutData('morris-donut-global', ngaConfirmed, ngaRecovered, ngaDeaths);
+        $('#search').val('');
+      })
+      
+      .fail(function(error) {
+        // console.log(error.responseText);
+        Swal.fire({
+          title:"Covid-19 data not found for this country",
+          confirmButtonClass:"btn btn-confirm mt-2"
         })
-        .fail(function(error) {
-          // console.log(error.responseText);
-          Swal.fire({
-            title:"Covid-19 data not found for this country",
-            confirmButtonClass:"btn btn-confirm mt-2"
-          })
-          $('#search').val('');
-        })
+        $('#search').val('');
+      })
 
-        $.getJSON(`https://covidapi.info/api/v1/country/${iso3[countryObject[countryName]]}/timeseries/${initialDate}/${newDate}`)
-          .then(function(ngdata) {
-            const ng = ngdata.result;
-            const newInfectedArr = ng.map(function(data) {
-              return {y: data.date, a: formatNumber(data.confirmed)}
-            })
-
-            const newRecoveredArr = ng.map(function(data) {
-              return {y: data.date, a: formatNumber(data.recovered)}
-            })
-
-            $('#morris-line-global-infected').empty();
-            $('#morris-line-global-recovered').empty();
-            lineChartData(newInfectedArr, 'morris-line-global-infected', 'Infected', ['#f9c851']);
-            lineChartData(newRecoveredArr, 'morris-line-global-recovered', 'Recovered', ['#10c469']);
+      $.getJSON(`https://covidapi.info/api/v1/country/${iso3[countryObject[countryName]]}/timeseries/${initialDate}/${newDate}`)
+        .then(function(ngdata) {
+          const ng = ngdata.result;
+          const newInfectedArr = ng.map(function(data) {
+            return {y: data.date, a: formatNumber(data.confirmed)}
           })
 
+          const newRecoveredArr = ng.map(function(data) {
+            return {y: data.date, a: formatNumber(data.recovered)}
+          })
 
-    }
-      }
+          $('#morris-line-global-infected').empty();
+          $('#morris-line-global-recovered').empty();
+          lineChartData(newInfectedArr, 'morris-line-global-infected', 'Infected', ['#f9c851']);
+          lineChartData(newRecoveredArr, 'morris-line-global-recovered', 'Recovered', ['#10c469']);
+        })
+
+
+  }
 })
 
 
