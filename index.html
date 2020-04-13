@@ -13,10 +13,14 @@
         <!--Morris Chart-->
         <link rel="stylesheet" href="dist/assets/libs/morris-js/morris.css" />
 
+        <!-- Sweet Alert css -->
+        <link href="dist/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
         <!-- App css -->
         <link href="dist/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="dist/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="dist/assets/css/jquery.autocomplete.css" rel="stylesheet" type="text/css">
 
     </head>
 
@@ -42,8 +46,7 @@
                             <!-- End mobile menu toggle-->
                         </li>
 
-
-                        <li class="dropdown notification-list">
+                        <li>
                             <a class="btn btn-danger btn-rounded width-md waves-effect waves-light" style="margin-top: 1rem; color: #fff;" href="https://ko-fi.com/ayindesamuel" target="_blank">Buy me Coffee</a>
                         </li>
 
@@ -104,11 +107,28 @@
         <div class="wrapper">
             <div class="container-fluid">
 
+              <div class="row">
+                <div class="col-12">
+                    <div class="p-2">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <input type="text" class="form-control" placeholder="Search Country... then press enter" id="search">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+
+              <!-- alert message -->
+              <input type="hidden" id="sa-basic">
+
                 <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title">Covid-19 Global Updates</h4>
+                            <h4 class="page-title" id="title">Covid-19 Global Updates</h4>
                         </div>
                     </div>
                 </div>
@@ -275,8 +295,11 @@
         <script src="dist/assets/libs/morris-js/morris.min.js"></script>
         <script src="dist/assets/libs/raphael/raphael.min.js"></script>
 
+        <!-- Sweet Alerts js -->
+        <script src="dist/assets/libs/sweetalert2/sweetalert2.min.js"></script>
         <!-- App js-->
         <script src="dist/assets/js/app.min.js"></script>
+        <script src="dist/assets/js/jquery.autocomplete.js"></script>
         <script src="dist/assets/js/index.js"></script>
 
     </body>
